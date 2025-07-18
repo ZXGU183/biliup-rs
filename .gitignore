@@ -11,3 +11,6 @@ data.db*
 *.json
 *.yaml
 .venv/
+
+Cargo.lock
+.sqlx/
