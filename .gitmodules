@@ -1,0 +1,4 @@
+[submodule "crates"]
+	path = crates
+	url = https://github.com/ZXGU183/biliup-crates.git
+	branch = biliup-rs
