@@ -2,8 +2,7 @@
 
 [![Crates.io](https://img.shields.io/crates/v/biliup)](https://crates.io/crates/biliup)
 ![GitHub all releases](https://img.shields.io/github/downloads/forgqi/biliup-rs/total)
-[![Telegram](https://img.shields.io/badge/Telegram-Group-blue.svg?logo=telegram)](https://t.me/+IkpIABHqy6U0ZTQ5)
-[![Discord chat][discord-badge]][discord-url]
+[![Chat on Matrix](https://img.shields.io/badge/Matrix-%23biliup--fork%3Amozilla.org-06D7A0?logo=matrix)](https://matrix.to/#/#biliup-fork:mozilla.org)
 
 [discord-badge]: https://img.shields.io/discord/1015494098481852447.svg?logo=discord
 [discord-url]: https://discord.gg/shZmdxDFB7
@@ -81,7 +80,7 @@ Options:
 $ biliup help
 Upload video to bilibili.
 
-Usage: biliup [OPTIONS] <COMMAND>
+Usage: biliup.exe [OPTIONS] <COMMAND>
 
 Commands:
   login     登录B站并保存登录信息
@@ -92,6 +91,7 @@ Commands:
   dump-flv  输出flv元数据
   download  下载视频
   list      列出所有已上传的视频
+  bind      绑定用户与代理(用户通过user_cookie参数指定)
   help      Print this message or the help of the given subcommand(s)
 
 Options:
@@ -118,7 +118,20 @@ $biliup renew  # ./cookies.json
 ```powershell
 biliup -p http://username:password@proxy.example.com:8080 upload
 ```
-
+您也可以通过以下方式为用户绑定代理
+```powershell
+.\biliup.exe -p http://username:password@proxy.example.com:8080 -u myname.json login
+```
+通过这样登录的账号会**自动**生成myname-proxy.json文件记录您使用的代理，后续您可以直接使用其他功能
+```powershell
+.\biliup.exe -u myname.json upoload
+```
+如果代理文件发生变更您可以直接编辑myname-proxy.json文件
+如果您的账号已经登录也可以使用以下命令自动创建代理配置文件
+```powershell
+.\biliup.exe -p http://username:password@proxy.example.com:8080 -u myname2.json bind
+```
+或者您可以手动建立yourname-proxy.json文件并填入"代理地址"
 ### Windows 演示
 
 登录：
